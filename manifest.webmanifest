@@ -1,0 +1,13 @@
+{
+  "name": "48 Laws of Power — বাংলা নোট",
+  "short_name": "48 Laws বাংলা",
+  "description": "The 48 Laws of Power-এর সহজ বাংলা স্টাডি নোট",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f1115",
+  "theme_color": "#111318",
+  "lang": "bn",
+  "icons": []
+}

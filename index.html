@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111318">
+<link rel="manifest" href="manifest.webmanifest"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
+<title>48 Laws of Power — বাংলা নোট</title>
+<style>
+@font-face{font-family:BN;src:local("Noto Sans Bengali"),local("Noto Sans Bengali UI")}
+*{box-sizing:border-box}
+:root{--bg:#0f1115;--panel:#171a20;--panel2:#1d2129;--text:#f4f5f7;--muted:#9da5b2;--line:#2a303a;--accent:#8ab4ff;--gold:#e8bd67;--paper:#fffdf7}
+body{margin:0;background:var(--bg);color:var(--text);font-family:BN,system-ui,sans-serif;min-height:100vh}
+body.light{--bg:#f5f6f8;--panel:#fff;--panel2:#eef1f5;--text:#15181d;--muted:#68707c;--line:#dfe3e8}
+.app{max-width:760px;margin:auto;padding-bottom:40px}
+header{padding:18px 18px 10px;position:sticky;top:0;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(16px);z-index:5}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:48px;height:48px;border-radius:15px;background:linear-gradient(135deg,#ffb5b5,#ff6d6d);display:grid;place-items:center;color:#101318;font-size:22px;font-weight:900;box-shadow:0 8px 24px #0004}
+h1{margin:0;font-size:20px;line-height:1.25}
+.sub{color:var(--muted);font-size:12px;margin-top:3px}
+.iconbtn{border:1px solid var(--line);background:var(--panel);color:var(--text);width:42px;height:42px;border-radius:14px;font-size:18px}
+.search{margin-top:14px;display:flex;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:0 14px}
+.search input{width:100%;padding:13px 8px;background:transparent;border:0;outline:0;color:var(--text);font-family:inherit;font-size:15px}
+.toolbar{display:flex;gap:8px;margin:12px 0;overflow:auto}
+.chip{white-space:nowrap;border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:999px;padding:8px 13px;font-family:inherit}
+.section{padding:0 18px}
+.count{color:var(--muted);font-size:12px;margin:12px 2px}
+.card{display:flex;align-items:center;gap:13px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:13px;margin:10px 0;box-shadow:0 5px 18px #0002;cursor:pointer}
+.law-num{width:42px;height:42px;flex:none;border-radius:13px;background:var(--panel2);display:grid;place-items:center;color:var(--gold);font-weight:800}
+.card-main{min-width:0;flex:1}
+.card-title{font-weight:800;font-size:15px}
+.card-en{color:var(--muted);font-size:11px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-preview{color:var(--muted);font-size:11px;line-height:1.45;margin-top:5px}
+.star{border:0;background:transparent;color:#67707d;font-size:22px;padding:4px}.star.on{color:var(--gold)}
+.empty{padding:50px 20px;text-align:center;color:var(--muted)}
+#detail{display:none;position:fixed;inset:0;background:var(--bg);z-index:20;overflow:auto}
+#detail.show{display:block}
+.detail-top{max-width:760px;margin:auto;padding:18px;display:grid;grid-template-columns:44px 1fr 44px;gap:10px;align-items:start}
+.back{width:42px;height:42px;border-radius:14px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:28px;line-height:1}
+.kicker{font-size:11px;color:var(--gold);font-weight:800;letter-spacing:.12em}
+.detail-top h1{font-size:22px;margin:5px 0 2px}
+.detail-en{font-family:Georgia,serif;color:var(--muted);font-size:12px;line-height:1.35}
+.star.big{width:42px;height:42px}
+.note{max-width:700px;margin:8px auto 0;background:var(--paper);color:#20242a;border-radius:24px 24px 0 0;padding:24px 20px 40px;min-height:65vh;box-shadow:0 -4px 30px #0002}
+.note h3{margin:16px 0 6px;color:#9b1c31;font-size:15px}
+.note h3:first-child{margin-top:0}
+.note p{font-size:15px;line-height:1.9;margin:0}
+.note .lesson{font-weight:700;color:#173f78}
+.nav-row{max-width:700px;margin:auto;padding:14px 20px 30px;display:flex;justify-content:space-between;gap:10px}
+.nav-row button{flex:1;border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:14px;padding:12px;font-family:inherit}
+.nav-row button:disabled{opacity:.35}
+@media(min-width:700px){header{border-radius:0 0 22px 22px}.section{padding:0 0}.note{border-radius:24px}.app{padding:0 18px 40px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <div class="top">
+    <div class="brand">
+      <div class="logo">48</div>
+      <div><h1>48 Laws of Power</h1><div class="sub">সহজ বাংলা নোট • Robert Greene</div></div>
+    </div>
+    <button class="iconbtn" id="theme" title="থিম">◐</button>
+  </div>
+  <div class="search">⌕ <input id="search" placeholder="Law খুঁজুন…"></div>
+  <div class="toolbar">
+    <button class="chip" id="all">সব Law</button>
+    <button class="chip" id="favOnly">★ পছন্দেরগুলো</button>
+  </div>
+</header>
+<main class="section">
+  <div class="count" id="count">48টি Law</div>
+  <div id="list"></div>
+</main>
+</div>
+<div id="detail"></div>
+<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js");</script><script>
+const state = {
+  query: "",
+  favorites: new Set(JSON.parse(localStorage.getItem("fav48") || "[]")),
+  dark: localStorage.getItem("theme48") !== "light"
+};
+
+const laws = [{"id": 1, "title_bn": "উপরের মানুষটিকে কখনো অযথা ছাপিয়ে যেও না", "title_en": "Never Outshine the Master", "explanation": "নিজের যোগ্যতা দেখানো ভালো, কিন্তু এমনভাবে নয় যাতে বস, শিক্ষক বা সিনিয়র মনে করেন তুমি তাকে হুমকি দিচ্ছ। দক্ষতা + বিনয়—এই ভারসাম্যটাই গুরুত্বপূর্ণ।", "example": "বসের সামনে তার ভুল ধরার বদলে সমাধানকে তার পরিকল্পনার উন্নতি হিসেবে উপস্থাপন করা।", "lesson": "যোগ্য হও, কিন্তু অহংকার দিয়ে অন্যের মর্যাদা নষ্ট কোরো না।"}, {"id": 2, "title_bn": "বন্ধুত্ব আর স্বার্থ—দুটোকে এক করে ফেলো না", "title_en": "Never Put Too Much Trust in Friends; Learn How to Use Enemies", "explanation": "বন্ধু সবসময় সবচেয়ে নির্ভরযোগ্য কর্মসঙ্গী নাও হতে পারে; আবার প্রতিদ্বন্দ্বী কখনো কখনো নিজের অবস্থান প্রমাণ করতে বেশি মনোযোগী হয়। তাই মানুষকে সম্পর্ক দিয়ে নয়, কাজ ও চরিত্র দিয়ে বিচার করো।", "example": "বন্ধুকে শুধু বন্ধু বলেই গুরুত্বপূর্ণ দায়িত্ব না দিয়ে তার দক্ষতা যাচাই করা।", "lesson": "অবিশ্বাসী হয়ে যেও না; উদ্দেশ্য হলো মানুষকে বাস্তবভাবে বোঝা।"}, {"id": 3, "title_bn": "তোমার আসল উদ্দেশ্য সবসময় প্রকাশ কোরো না", "title_en": "Conceal Your Intentions", "explanation": "তুমি কী করতে যাচ্ছ তা আগেই সবাইকে বলে দিলে অন্যরা তোমার পরিকল্পনা নষ্ট করতে পারে। প্রয়োজন অনুযায়ী তথ্য দাও; তবে মিথ্যা তৈরি করে মানুষকে ঠকানো নয়।", "example": "চাকরি বদলের পরিকল্পনা চূড়ান্ত হওয়ার আগে অপ্রয়োজনীয় সবার কাছে না বলা।", "lesson": "গোপনীয়তা মানে প্রতারণা নয়; প্রয়োজনের চেয়ে বেশি তথ্য না দেওয়া।"}, {"id": 4, "title_bn": "প্রয়োজনের চেয়ে কম কথা বলো", "title_en": "Always Say Less Than Necessary", "explanation": "বেশি কথা বললে ভুল, দুর্বলতা বা অপ্রয়োজনীয় তথ্য বেরিয়ে যায়। সংক্ষিপ্ত ও পরিষ্কার কথা অনেক সময় বেশি আত্মবিশ্বাসী শোনায়।", "example": "কেউ প্রশ্ন করলে দীর্ঘ গল্প না করে সরাসরি প্রয়োজনীয় উত্তর দেওয়া।", "lesson": "চুপ থাকা যেন অহংকার বা অসহযোগিতা না হয়।"}, {"id": 5, "title_bn": "সুনামকে খুব গুরুত্ব দাও", "title_en": "So Much Depends on Reputation—Guard It with Your Life", "explanation": "মানুষ তোমাকে কীভাবে দেখে, তা সুযোগ ও বিশ্বাসে বড় প্রভাব ফেলে। তাই কথাবার্তা, কাজ ও অনলাইন আচরণে ধারাবাহিক থাকো।", "example": "একবার ভুল হলে অজুহাত না দিয়ে দ্রুত স্বীকার ও সংশোধন করা।", "lesson": "সুনাম রক্ষা মানে ভুল লুকানো নয়; বরং বিশ্বাসযোগ্য থাকা।"}, {"id": 6, "title_bn": "মনোযোগ আকর্ষণের গুরুত্ব বোঝো", "title_en": "Court Attention at All Cost", "explanation": "মানুষ সাধারণত যা চোখে পড়ে সেটাই মনে রাখে। তাই কাজ, উপস্থাপন বা ব্যক্তিত্বকে এমনভাবে সাজাও যাতে তোমার ভালো কাজ হারিয়ে না যায়।", "example": "ভালো প্রজেক্ট করলে পরিষ্কার ফলাফলসহ তা উপস্থাপন করা।", "lesson": "নেতিবাচক প্রচার করে জনপ্রিয় হওয়ার চেষ্টা বিপজ্জনক।"}, {"id": 7, "title_bn": "সহযোগিতা ব্যবহার করো—কিন্তু কৃতিত্বে ন্যায্য থাকো", "title_en": "Get Others to Do the Work for You, but Always Take the Credit", "explanation": "বড় কাজ একা না করে দক্ষ মানুষের সহযোগিতা নেওয়া বুদ্ধিমানের কাজ। তবে অন্যের কাজ নিজের নামে চালিয়ে দেওয়া অনৈতিক; প্রকৃত অবদান স্বীকার করাই দীর্ঘমেয়াদে শক্তি।", "example": "একটি টিম প্রজেক্টে যে যার কাজ ভাগ করে নেওয়া এবং শেষে সবার অবদান উল্লেখ করা।", "lesson": "বইয়ের এই Law-এর ম্যানিপুলেটিভ অংশ নয়, কার্যকর delegation-টাই শেখো।"}, {"id": 8, "title_bn": "সবসময় তুমি দৌড়ে যেও না; সুযোগ তৈরি করো", "title_en": "Make Other People Come to You—Use Bait if Necessary", "explanation": "যেখানে সম্ভব, এমন মূল্য তৈরি করো যাতে মানুষ নিজেই তোমার কাছে আসে। নিজের সময় ও অবস্থানকে সম্মান করাও দরকার।", "example": "একজন ফ্রিল্যান্সার নিজের কাজের নমুনা ও পরিষ্কার অফার তৈরি করে ক্লায়েন্টকে আগ্রহী করা।", "lesson": "প্রলোভন দিয়ে প্রতারণা নয়; সত্যিকারের মূল্য দিয়ে আকর্ষণ তৈরি করো।"}, {"id": 9, "title_bn": "তর্কের বদলে ফলাফল দিয়ে প্রমাণ করো", "title_en": "Win Through Your Actions, Never Through Argument", "explanation": "শুধু কথা বলে কাউকে হারানো সাময়িক। বাস্তব ফলাফল দেখাতে পারলে বিরোধ অনেক সময় নিজেই শেষ হয়ে যায়।", "example": "কেউ বলল তুমি সময়মতো কাজ পারবে না—তর্ক না করে সময়মতো কাজ জমা দেওয়া।", "lesson": "সব তর্ক এড়িয়ে যাওয়া নয়; প্রয়োজন হলে তথ্যভিত্তিক আলোচনা করো।"}, {"id": 10, "title_bn": "অতিরিক্ত নেতিবাচকতার প্রভাব থেকে নিজেকে বাঁচাও", "title_en": "Infection: Avoid the Unhappy and Unlucky", "explanation": "মানুষের আবেগ ও অভ্যাস ছড়িয়ে পড়ে। সবসময় অভিযোগ, হতাশা বা বিশৃঙ্খলায় থাকা মানুষের প্রভাব নিজের উপর পড়তে পারে।", "example": "বন্ধু সমস্যায় থাকলে সাহায্য করা, কিন্তু তার সব নেতিবাচক অভ্যাস নিজের জীবনে নেওয়া নয়।", "lesson": "কষ্টে থাকা মানুষকে ঘৃণা নয়—নিজের সীমা ও মানসিক স্থিরতা রক্ষা।"}, {"id": 11, "title_bn": "তোমার মূল্য এমন করো যাতে মানুষ তোমাকে প্রয়োজন মনে করে", "title_en": "Learn to Keep People Dependent on You", "explanation": "দক্ষতা, নির্ভরযোগ্যতা ও বিশেষ জ্ঞান তৈরি করলে তোমার কাজের মূল্য বাড়ে। উদ্দেশ্য অন্যকে আটকে রাখা নয়; নিজের দক্ষতাকে শক্তিশালী করা।", "example": "একজন কর্মী এমন একটি দক্ষতা শেখে যা টিমে গুরুত্বপূর্ণ, এবং সেই জ্ঞান অন্যদেরও শেখায়।", "lesson": "জ্ঞান ইচ্ছাকৃতভাবে লুকিয়ে dependency তৈরি করা দীর্ঘমেয়াদে ক্ষতিকর।"}, {"id": 12, "title_bn": "সততা ও উদারতা বেছে ব্যবহার করো", "title_en": "Use Selective Honesty and Generosity to Disarm Your Victim", "explanation": "একটি সত্য কথা বা ছোট উপকার মানুষের প্রতিরোধ কমাতে পারে। কিন্তু এটাকে কারও দুর্বলতা কাজে লাগানোর অস্ত্র বানানো ঠিক নয়।", "example": "আলোচনার শুরুতে নিজের একটি সত্যিকারের সীমাবদ্ধতা স্বীকার করে বিশ্বাস তৈরি করা।", "lesson": "উপকারের আড়ালে গোপন ফাঁদ পাতা এড়িয়ে চলো।"}, {"id": 13, "title_bn": "সাহায্য চাইলে পারস্পরিক লাভ দেখাও", "title_en": "When Asking for Help, Appeal to People’s Self-Interest", "explanation": "মানুষ সাধারণত তখন বেশি আগ্রহী হয় যখন কাজটিতে তারও কোনো লাভ, শেখা বা মূল্য থাকে। শুধু দয়া চেয়ে নয়, পরিষ্কারভাবে mutual benefit বোঝাও।", "example": "সহকর্মীকে সাহায্য চাইতে বলা—‘তুমি এটা করলে তোমারও প্রজেক্টে অভিজ্ঞতা হবে।’", "lesson": "মানুষের দুর্বলতা শোষণ নয়; ন্যায্য বিনিময় তৈরি করো।"}, {"id": 14, "title_bn": "শুনতে শেখো এবং তথ্য বুঝে নাও", "title_en": "Pose as a Friend, Work as a Spy", "explanation": "মানুষ কী বলছে, কী করছে এবং কী চায়—এসব পর্যবেক্ষণ করা সামাজিক বুদ্ধিমত্তার অংশ। গোপনে ক্ষতি করার জন্য গুপ্তচরবৃত্তি নয়; তথ্য যাচাইয়ের দক্ষতা শেখাই নিরাপদ প্রয়োগ।", "example": "মিটিংয়ে কথা বলার পাশাপাশি সবার প্রয়োজন ও উদ্বেগ নোট করা।", "lesson": "ব্যক্তিগত গোপনীয়তা লঙ্ঘন কোরো না।"}, {"id": 15, "title_bn": "দীর্ঘমেয়াদি সংঘাত অর্ধেক রেখে যেও না", "title_en": "Crush Your Enemy Totally", "explanation": "বইটি শত্রুকে পুরোপুরি ধ্বংস করার কঠোর কৌশল বললেও বাস্তবে এর নিরাপদ শিক্ষা হলো—সমস্যার মূল কারণ সমাধান করো, যেন একই দ্বন্দ্ব বারবার না ফিরে আসে।", "example": "কর্মক্ষেত্রে ভুলের জন্য কাউকে অপমান না করে প্রক্রিয়ার দুর্বলতা ঠিক করা।", "lesson": "প্রতিশোধ নয়; conflict resolution ও boundary-setting বেছে নাও।"}, {"id": 16, "title_bn": "অতিরিক্ত উপস্থিতি মূল্য কমাতে পারে", "title_en": "Use Absence to Increase Respect and Honor", "explanation": "সবসময় হাতের কাছে থাকলে মানুষ তোমাকে স্বাভাবিক ধরে নিতে পারে। নিজের সময়, সীমা ও ব্যক্তিগত জায়গা বজায় রাখলে উপস্থিতির মূল্য বাড়ে।", "example": "প্রতিদিন সারাক্ষণ মেসেজে না থেকে নির্দিষ্ট সময়ে যোগাযোগ করা।", "lesson": "ইচ্ছা করে মানুষকে শাস্তি দিতে গায়েব হওয়া ঠিক নয়।"}, {"id": 17, "title_bn": "সবসময় একই প্রতিক্রিয়া দেখানো জরুরি নয়", "title_en": "Keep Others in Suspended Terror: Cultivate an Air of Unpredictability", "explanation": "Lawটির চরম সংস্করণ ভয় ও অনিশ্চয়তা তৈরির কথা বলে। নিরাপদ শিক্ষা হলো—নিজেকে এত predictable কোরো না যে সবাই তোমার সীমা পরীক্ষা করতে পারে; তবে অকারণে ভয় সৃষ্টি কোরো না।", "example": "অন্যায় আচরণে কখন কীভাবে boundary দেবে, সেটা শান্তভাবে পরিস্থিতি অনুযায়ী ঠিক করা।", "lesson": "ভয় দেখানো নয়—আত্মনিয়ন্ত্রণ ও flexibility।"}, {"id": 18, "title_bn": "নিজেকে পুরোপুরি বিচ্ছিন্ন কোরো না", "title_en": "Do Not Build Fortresses to Protect Yourself—Isolation Is Dangerous", "explanation": "নিজেকে রক্ষা করতে গিয়ে সবার থেকে দূরে সরে গেলে তথ্য, সুযোগ ও সহায়তা—সব কমে যায়। সম্পর্ক ও যোগাযোগের নেটওয়ার্ক দরকার।", "example": "সমস্যা হলে একা সব সামলানোর বদলে বিশ্বস্ত মানুষের পরামর্শ নেওয়া।", "lesson": "সীমা রাখো, কিন্তু দেয়াল তুলে ফেলো না।"}, {"id": 19, "title_bn": "কার সঙ্গে কথা বলছ তা বুঝে চল", "title_en": "Know Who You’re Dealing With—Do Not Offend the Wrong Person", "explanation": "সব মানুষ একইভাবে সমালোচনা, রসিকতা বা প্রত্যাখ্যান নেয় না। ব্যক্তির স্বভাব, অবস্থান ও পরিস্থিতি বুঝে কথা বলা সামাজিক বুদ্ধিমত্তা।", "example": "রাগী ক্লায়েন্টের সামনে ব্যঙ্গ না করে শান্ত ও তথ্যভিত্তিক থাকা।", "lesson": "অতিরিক্ত ভয় নয়; সচেতনতা।"}, {"id": 20, "title_bn": "অযথা পক্ষ নেবে না", "title_en": "Do Not Commit to Anyone", "explanation": "সব বিষয়ে তাড়াহুড়ো করে পক্ষ নিলে স্বাধীন সিদ্ধান্তের জায়গা কমে যায়। নিজের মূল্যবোধ ও স্বার্থ বুঝে commitment দাও।", "example": "দুই সহকর্মীর ঝগড়ায় পুরো ঘটনা না জেনে কারও দলে না যাওয়া।", "lesson": "সৎ অবস্থান নেওয়া দরকার হলে নিরপেক্ষতার আড়ালে থেকো না।"}, {"id": 21, "title_bn": "সবসময় নিজের সব বুদ্ধি দেখানোর দরকার নেই", "title_en": "Play a Sucker to Catch a Sucker—Seem Dumber Than Your Mark", "explanation": "মানুষ কখনো নিজের শ্রেষ্ঠত্বের অনুভূতিতে বেশি কথা বলে। তাই শান্তভাবে শুনে পরিস্থিতি বোঝা কাজে লাগতে পারে।", "example": "আলোচনায় আগে অন্য পক্ষকে তার প্রয়োজন ও শর্ত ব্যাখ্যা করতে দেওয়া।", "lesson": "ইচ্ছা করে নিজেকে বোকা সাজিয়ে প্রতারণা করা নয়; active listening শেখো।"}, {"id": 22, "title_bn": "কখন পিছু হটতে হবে তা জানো", "title_en": "Use the Surrender Tactic: Transform Weakness into Power", "explanation": "সব লড়াই জেতা দরকার নেই। সাময়িকভাবে পিছিয়ে গিয়ে সময়, তথ্য বা শক্তি জোগাড় করে পরে ভালো সিদ্ধান্ত নেওয়া যায়।", "example": "ঝগড়া বাড়ছে বুঝে কথোপকথন থামিয়ে পরে শান্তভাবে আলোচনা করা।", "lesson": "সম্মান রক্ষার নামে অকারণে সংঘাতে জড়িও না।"}, {"id": 23, "title_bn": "শক্তি ছড়িয়ে না দিয়ে গুরুত্বপূর্ণ জায়গায় দাও", "title_en": "Concentrate Your Forces", "explanation": "একসাথে দশটি লক্ষ্য ধরলে কোনোটি ভালো হয় না। সবচেয়ে গুরুত্বপূর্ণ ১–২টি বিষয়ে সময় ও শক্তি কেন্দ্রীভূত করো।", "example": "একসাথে পাঁচটি কোর্স না নিয়ে পরীক্ষার জন্য একটি বিষয়ের ওপর ধারাবাহিকভাবে কাজ করা।", "lesson": "Focus মানে বাকি সব চিরতরে বাদ দেওয়া নয়।"}, {"id": 24, "title_bn": "সামাজিক শিষ্টাচার ও কূটনীতি শেখো", "title_en": "Play the Perfect Courtier", "explanation": "কথা বলার ধরন, সময়জ্ঞান, সম্মান দেখানো এবং নিজের আবেগ নিয়ন্ত্রণ—এসব কর্মক্ষেত্র ও সম্পর্কের শক্তি বাড়ায়।", "example": "মিটিংয়ে অন্যের কথা কেটে না দিয়ে নিজের পয়েন্ট সংক্ষেপে বলা।", "lesson": "তোষামোদ নয়; respectful professionalism।"}, {"id": 25, "title_bn": "নিজেকে সচেতনভাবে গড়ে তোলো", "title_en": "Re-Create Yourself", "explanation": "তুমি আজ যেমন, চিরকাল তেমন থাকতে হবে না। অভ্যাস, পোশাক, দক্ষতা, যোগাযোগ ও পরিচয়—সবকিছু উন্নত করা যায়।", "example": "যে বিষয়ে দুর্বল, সেখানে প্রতিদিন ৩০ মিনিট শেখার অভ্যাস তৈরি করা।", "lesson": "ভান করে নতুন মানুষ হওয়ার চেয়ে বাস্তব পরিবর্তন করো।"}, {"id": 26, "title_bn": "নিজের সুনামকে অপ্রয়োজনীয় ঝামেলা থেকে বাঁচাও", "title_en": "Keep Your Hands Clean", "explanation": "ভুল কাজ অন্যের ঘাড়ে চাপানো নয়; বরং দায়িত্ব পরিষ্কার রাখা, নথি রাখা এবং অপ্রয়োজনীয় কেলেঙ্কারি এড়িয়ে চলা।", "example": "কাজ ভাগ করার সময় দায়িত্ব লিখিতভাবে পরিষ্কার করা।", "lesson": "দোষ লুকানো নয়—স্বচ্ছতা ও accountability।"}, {"id": 27, "title_bn": "মানুষের বিশ্বাসের প্রয়োজনকে বুঝো", "title_en": "Play on People’s Need to Believe to Create a Cultlike Following", "explanation": "মানুষ অর্থ, আশা ও কোনো বড় উদ্দেশ্যের সঙ্গে যুক্ত হতে চায়। নেতৃত্বে এটি ইতিবাচকভাবে ব্যবহার করে একটি পরিষ্কার vision দেওয়া যায়; অন্ধ অনুসরণ তৈরি করা উচিত নয়।", "example": "টিমকে শুধু ‘কাজ করো’ না বলে কেন কাজটি গুরুত্বপূর্ণ তা বোঝানো।", "lesson": "ব্যক্তিপূজা, অন্ধ বিশ্বাস ও manipulation থেকে দূরে থাকো।"}, {"id": 28, "title_bn": "সিদ্ধান্ত নিলে আত্মবিশ্বাসের সঙ্গে কাজ করো", "title_en": "Enter Action with Boldness", "explanation": "অতিরিক্ত দ্বিধা সুযোগ নষ্ট করে। তথ্য যথেষ্ট হলে পরিকল্পনা করে দৃঢ়ভাবে শুরু করো।", "example": "নতুন কাজ শেখার সিদ্ধান্ত নিয়ে প্রথম ছোট পদক্ষেপটি আজই নেওয়া।", "lesson": "Boldness ≠ reckless risk।"}, {"id": 29, "title_bn": "শেষ ফলাফল মাথায় রেখে পরিকল্পনা করো", "title_en": "Plan All the Way to the End", "explanation": "শুধু শুরু কীভাবে করবে তা নয়, মাঝপথের সমস্যা ও শেষ ফল কী হবে সেটাও আগে ভাবা দরকার।", "example": "পরীক্ষার পড়ায় শুধু আজ কী পড়বে নয়—সিলেবাস, revision ও mock test-এর পুরো পরিকল্পনা করা।", "lesson": "পরিকল্পনা বদলাতে হলে বাস্তবতার সঙ্গে বদলাও।"}, {"id": 30, "title_bn": "প্রস্তুতি গোপন রাখতে পারো, ফলাফল পরিষ্কার রাখো", "title_en": "Make Your Accomplishments Seem Effortless", "explanation": "দক্ষ মানুষকে অনেক সময় স্বাভাবিক ও effortless মনে হয়, কারণ কঠিন প্রস্তুতি আগে করা থাকে। নিজের পরিশ্রম নিয়ে অহংকার না করে ফলাফলকে কথা বলতে দাও।", "example": "Presentation-এর আগে বহুবার practice করে মঞ্চে শান্তভাবে দেওয়া।", "lesson": "কঠিন কাজকে সহজ দেখানো মানে অন্যের অবদান অস্বীকার করা নয়।"}, {"id": 31, "title_bn": "বিকল্প এমনভাবে সাজাও যাতে সিদ্ধান্তের কাঠামো পরিষ্কার থাকে", "title_en": "Control the Options: Get Others to Play with the Cards You Deal", "explanation": "সব অপশন না ছড়িয়ে ২–৩টি বাস্তবসম্মত বিকল্প দিলে সিদ্ধান্ত সহজ হয়। তবে ইচ্ছাকৃতভাবে মানুষকে ফাঁদে ফেলা নয়।", "example": "ক্লায়েন্টকে ‘এই তিনটি প্যাকেজের কোনটি আপনার জন্য ভালো?’ বলা।", "lesson": "বিকল্প যেন সত্যিই ন্যায্য ও বাস্তব হয়।"}, {"id": 32, "title_bn": "মানুষের আশা ও কল্পনার ভাষা বোঝো", "title_en": "Play to People’s Fantasies", "explanation": "শুধু তথ্য নয়, মানুষ কেন কিছু চায়—সেই আবেগও বোঝা দরকার। ভালো যোগাযোগে vision ও বাস্তব ফল দুটোই থাকে।", "example": "একটি পণ্যের ফিচার বলার পাশাপাশি সেটি কী সমস্যা সমাধান করবে তা বোঝানো।", "lesson": "মিথ্যা স্বপ্ন বিক্রি কোরো না।"}, {"id": 33, "title_bn": "প্রত্যেক মানুষের গুরুত্বপূর্ণ চালিকা শক্তি বুঝে নাও", "title_en": "Discover Each Man’s Thumbscrew", "explanation": "কারও কাছে সম্মান, কারও কাছে নিরাপত্তা, কারও কাছে স্বাধীনতা বা স্বীকৃতি গুরুত্বপূর্ণ। এগুলো বুঝলে যোগাযোগ কার্যকর হয়।", "example": "সহকর্মীকে দায়িত্ব দেওয়ার সময় তার আগ্রহের জায়গার সঙ্গে কাজ মিলিয়ে দেওয়া।", "lesson": "দুর্বলতা খুঁজে শোষণ নয়; motivation বোঝা।"}, {"id": 34, "title_bn": "নিজেকে সম্মান দিলে অন্যরাও সম্মান শেখে", "title_en": "Be Royal in Your Own Fashion: Act Like a King to Be Treated Like One", "explanation": "নিজের সময়, কথা ও সীমার মূল্য নিজেই ঠিক করো। অতিরিক্ত আত্মঅবমূল্যায়ন মানুষকে ভুল সংকেত দিতে পারে।", "example": "অন্যায় কাজের অনুরোধে শান্তভাবে ‘না’ বলা।", "lesson": "অহংকার নয়; self-respect।"}, {"id": 35, "title_bn": "সময়জ্ঞান একটি শক্তি", "title_en": "Master the Art of Timing", "explanation": "সঠিক সিদ্ধান্ত ভুল সময়ে নিলে ফল খারাপ হতে পারে। কখন অপেক্ষা করতে হবে এবং কখন দ্রুত পদক্ষেপ নিতে হবে—এটা শেখো।", "example": "রাগের মুহূর্তে গুরুত্বপূর্ণ মেসেজ না পাঠিয়ে শান্ত হওয়ার পর উত্তর দেওয়া।", "lesson": "Timing-এর সঙ্গে বাস্তব তথ্যও জরুরি।"}, {"id": 36, "title_bn": "যা নিয়ন্ত্রণে নেই, তার পেছনে অতিরিক্ত শক্তি নষ্ট কোরো না", "title_en": "Disdain Things You Cannot Have: Ignoring Them Is the Best Revenge", "explanation": "সবকিছু পাওয়া সম্ভব নয়। কিছু জিনিসকে ছেড়ে এগিয়ে যাওয়া মানসিক শক্তি বাঁচায়।", "example": "কেউ ইচ্ছা করে তোমাকে ignore করলে বারবার attention না চেয়ে নিজের কাজে ফিরে যাওয়া।", "lesson": "অন্যায়কে উপেক্ষা নয়—যেখানে boundary দরকার সেখানে দাও।"}, {"id": 37, "title_bn": "ভালো উপস্থাপনাকে গুরুত্ব দাও", "title_en": "Create Compelling Spectacles", "explanation": "মানুষ দৃশ্যমান উদাহরণ ও memorable presentation বেশি মনে রাখে। তাই কাজের quality-এর পাশাপাশি presentation-ও ভালো করো।", "example": "ডেটা শুধু টেবিলে না দিয়ে পরিষ্কার chart ও উদাহরণসহ উপস্থাপন করা।", "lesson": "দেখনদারি যেন বাস্তব মানের বিকল্প না হয়।"}, {"id": 38, "title_bn": "নিজের চিন্তা রাখো, সামাজিক বুদ্ধি ব্যবহার করো", "title_en": "Think as You Like but Behave Like Others", "explanation": "সব সত্য কথা সব জায়গায় একইভাবে বলা যায় না। পরিবেশ ও সংস্কৃতি বুঝে আচরণ করা সামাজিক দক্ষতা।", "example": "অফিসের formal meeting-এ casual বন্ধুর মতো আচরণ না করা।", "lesson": "নিজস্ব মূল্যবোধ হারিয়ে শুধু সবাইকে খুশি করার চেষ্টা কোরো না।"}, {"id": 39, "title_bn": "অন্যের আবেগে উত্তেজিত না হয়ে স্থির থাকো", "title_en": "Stir Up Waters to Catch Fish", "explanation": "এই Law অন্যের আবেগ উসকে সুবিধা নেওয়ার কথা বলে। নিরাপদ শিক্ষা হলো—নিজের আবেগ নিয়ন্ত্রণ করো এবং কেউ ইচ্ছা করে উত্তেজিত করলে তাতে তাড়াহুড়ো করে প্রতিক্রিয়া দিও না।", "example": "কেউ রাগিয়ে সিদ্ধান্ত নিতে বাধ্য করতে চাইলে বলা—‘আমি একটু সময় নিয়ে উত্তর দেব।’", "lesson": "ইচ্ছা করে কাউকে provoke করা এড়িয়ে চলো।"}, {"id": 40, "title_bn": "ফ্রি জিনিসের লুকানো মূল্য বুঝে নাও", "title_en": "Despise the Free Lunch", "explanation": "কিছু ‘ফ্রি’ অফারের পেছনে শর্ত, ডেটা, সময় বা ভবিষ্যৎ খরচ থাকতে পারে। মূল্য ও শর্ত বুঝে সিদ্ধান্ত নাও।", "example": "ফ্রি অ্যাপ ইনস্টল করার আগে কী permission চাইছে তা দেখা।", "lesson": "সব ফ্রি জিনিস খারাপ নয়; শুধু সচেতন হও।"}, {"id": 41, "title_bn": "অন্যের কপি না হয়ে নিজের পরিচয় তৈরি করো", "title_en": "Avoid Stepping into a Great Man’s Shoes", "explanation": "বড় কারও উত্তরসূরি হলে তার মতো হতে গিয়ে নিজের শক্তি হারানো সহজ। তার ভালো দিক শিখে নিজের style তৈরি করো।", "example": "প্রিয় শিক্ষক বা সিনিয়রের পদ্ধতি শেখা, কিন্তু নিজের কাজের ধরন তৈরি করা।", "lesson": "তুলনা নয়—নিজস্ব উন্নতি।"}, {"id": 42, "title_bn": "সমস্যার কেন্দ্রীয় কারণ খুঁজে সমাধান করো", "title_en": "Strike the Shepherd and the Sheep Will Scatter", "explanation": "একটি সমস্যা যদি একটি নির্দিষ্ট উৎস থেকে বারবার তৈরি হয়, সেই root cause সমাধান করলে পুরো সমস্যার প্রভাব কমে।", "example": "টিমে বারবার একই ভুল হলে শুধু কর্মীকে দোষ না দিয়ে দুর্বল process ঠিক করা।", "lesson": "কাউকে আক্রমণ নয়; root-cause analysis।"}, {"id": 43, "title_bn": "মানুষকে শুধু যুক্তি দিয়ে নয়, সম্মান ও সহমর্মিতা দিয়ে বোঝো", "title_en": "Work on the Hearts and Minds of Others", "explanation": "মানুষের অনুভূতি, প্রয়োজন ও মর্যাদা বুঝলে প্রভাব তৈরি করা সহজ হয়। দীর্ঘমেয়াদি সম্পর্ক জোর করে নয়, trust দিয়ে তৈরি হয়।", "example": "কর্মীর ভুল ধরার আগে তার সমস্যাটা শুনে তারপর সমাধান দেওয়া।", "lesson": "সহমর্মিতা মানে সবকিছু মেনে নেওয়া নয়।"}, {"id": 44, "title_bn": "আয়নার মতো প্রতিফলন মানুষকে নিজের আচরণ বুঝতে সাহায্য করতে পারে", "title_en": "Disarm and Infuriate with the Mirror Effect", "explanation": "কারও আচরণ শান্তভাবে তার সামনে প্রতিফলিত করলে সে নিজের আচরণের প্রভাব দেখতে পারে। এটি প্রতিশোধের জন্য নয়, self-awareness-এর জন্য ব্যবহার করাই ভালো।", "example": "কেউ বারবার বাধা দিলে বলা—‘আমি আপনার কথা শেষ করতে দিই; আপনিও কি আমাকে শেষ করতে দেবেন?’", "lesson": "ব্যঙ্গ বা অপমান করে mirror effect ব্যবহার কোরো না।"}, {"id": 45, "title_bn": "পরিবর্তন দরকার, কিন্তু একসাথে সব বদলিও না", "title_en": "Preach the Need for Change, but Never Reform Too Much at Once", "explanation": "মানুষ পরিচিত জিনিসে নিরাপদ বোধ করে। তাই বড় পরিবর্তন হলে ধাপে ধাপে বাস্তবায়ন করলে resistance কমে।", "example": "নতুন পড়ার রুটিনে একদিনে ৮ ঘণ্টা না বসে প্রথমে ১–২ ঘণ্টা দিয়ে শুরু করা।", "lesson": "অপ্রয়োজনীয় পুরোনো অভ্যাস ধরে রাখার অজুহাতও দিও না।"}, {"id": 46, "title_bn": "নিজেকে অতিরিক্ত নিখুঁত দেখানোর চেষ্টা কোরো না", "title_en": "Never Appear Too Perfect", "explanation": "অতিরিক্ত perfect image কখনো কখনো দূরত্ব বা হিংসা তৈরি করতে পারে। স্বাভাবিক থাকা ও ছোটখাটো ভুল স্বীকার করা মানুষকে কাছে আনে।", "example": "প্রেজেন্টেশনে সব জানি এমন না দেখিয়ে ‘এই অংশটা পরে যাচাই করে জানাব’ বলা।", "lesson": "ইচ্ছা করে ভুল করা নয়; বাস্তব ও মানবিক থাকা।"}, {"id": 47, "title_bn": "জিতেও কখন থামতে হবে জানো", "title_en": "Know When to Stop; After Victory, Learn When to Quit", "explanation": "সাফল্যের পর অতিরিক্ত আত্মবিশ্বাসে আরও বেশি ঝুঁকি নিলে আগের লাভ নষ্ট হতে পারে। প্রয়োজনীয় লক্ষ্য পূরণ হলে থামার সময়ও বুঝতে হবে।", "example": "ভালো লাভের পর লোভে অযথা আরও ঝুঁকি না নেওয়া।", "lesson": "সাফল্য মানেই সবসময় আরও বেশি নয়।"}, {"id": 48, "title_bn": "পরিস্থিতি অনুযায়ী নিজেকে মানিয়ে নাও", "title_en": "Assume Formlessness", "explanation": "কঠোরভাবে এক পদ্ধতিতে আটকে না থেকে পরিস্থিতি অনুযায়ী strategy বদলাতে শেখো। সবচেয়ে শক্তিশালী মানুষ সবসময় একইভাবে চলে না।", "example": "একটি পড়ার পদ্ধতি কাজ না করলে অন্য পদ্ধতি চেষ্টা করা।", "lesson": "মূল মূল্যবোধে স্থির থাকো, কিন্তু পদ্ধতিতে flexible হও।"}];
+
+function saveFav() {
+  localStorage.setItem("fav48", JSON.stringify([...state.favorites]));
+}
+
+function esc(s) {
+  return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function render() {
+  document.body.classList.toggle("light", !state.dark);
+  const list = document.getElementById("list");
+  const q = state.query.trim().toLowerCase();
+  const filtered = laws.filter(x =>
+    !q ||
+    x.title_bn.toLowerCase().includes(q) ||
+    x.title_en.toLowerCase().includes(q) ||
+    x.explanation.toLowerCase().includes(q)
+  );
+
+  document.getElementById("count").textContent = `${filtered.length}টি Law`;
+  list.innerHTML = filtered.map(x => `
+    <article class="card" onclick="openLaw(${x.id})">
+      <div class="law-num">${String(x.id).padStart(2,"0")}</div>
+      <div class="card-main">
+        <div class="card-title">${esc(x.title_bn)}</div>
+        <div class="card-en">${esc(x.title_en)}</div>
+        <div class="card-preview">${esc(x.explanation.slice(0, 120))}…</div>
+      </div>
+      <button class="star ${state.favorites.has(x.id) ? "on":""}" aria-label="favorite"
+        onclick="event.stopPropagation(); toggleFav(${x.id})">★</button>
+    </article>
+  `).join("") || `<div class="empty">কোনো Law পাওয়া যায়নি।</div>`;
+}
+
+function openLaw(id) {
+  const x = laws.find(a => a.id === id);
+  if (!x) return;
+  document.getElementById("detail").innerHTML = `
+    <div class="detail-top">
+      <button class="back" onclick="closeLaw()">‹</button>
+      <div>
+        <div class="kicker">LAW ${String(x.id).padStart(2,"0")}</div>
+        <h1>${esc(x.title_bn)}</h1>
+        <div class="detail-en">${esc(x.title_en)}</div>
+      </div>
+      <button class="star big ${state.favorites.has(x.id) ? "on":""}" onclick="toggleFav(${x.id}); openLaw(${x.id})">★</button>
+    </div>
+    <section class="note">
+      <h3>💡 ব্যাখ্যা</h3><p>${esc(x.explanation)}</p>
+      <h3>🎯 উদাহরণ</h3><p>${esc(x.example)}</p>
+      <h3>🧠 মনে রাখবে</h3><p class="lesson">${esc(x.lesson)}</p>
+    </section>
+    <div class="nav-row">
+      <button ${x.id===1?"disabled":""} onclick="openLaw(${x.id-1})">← আগের</button>
+      <button ${x.id===48?"disabled":""} onclick="openLaw(${x.id+1})">পরের →</button>
+    </div>`;
+  document.getElementById("detail").classList.add("show");
+  window.scrollTo({top:0, behavior:"instant"});
+}
+
+function closeLaw() {
+  document.getElementById("detail").classList.remove("show");
+}
+
+function toggleFav(id) {
+  state.favorites.has(id) ? state.favorites.delete(id) : state.favorites.add(id);
+  saveFav(); render();
+}
+
+document.getElementById("search").addEventListener("input", e => {
+  state.query = e.target.value;
+  render();
+});
+document.getElementById("theme").addEventListener("click", () => {
+  state.dark = !state.dark;
+  localStorage.setItem("theme48", state.dark ? "dark" : "light");
+  render();
+});
+document.getElementById("favOnly").addEventListener("click", () => {
+  const list = document.getElementById("list");
+  const old = state.query;
+  state.query = "__FAV_ONLY__";
+  const filtered = laws.filter(x => state.favorites.has(x.id));
+  document.getElementById("count").textContent = `${filtered.length}টি পছন্দ`;
+  list.innerHTML = filtered.length ? filtered.map(x => `
+    <article class="card" onclick="openLaw(${x.id})">
+      <div class="law-num">${String(x.id).padStart(2,"0")}</div>
+      <div class="card-main"><div class="card-title">${esc(x.title_bn)}</div><div class="card-en">${esc(x.title_en)}</div></div>
+      <button class="star on" onclick="event.stopPropagation(); toggleFav(${x.id})">★</button>
+    </article>`).join("") : `<div class="empty">এখনও কোনো Law পছন্দ হিসেবে রাখা হয়নি।</div>`;
+  state.query = old;
+});
+document.getElementById("all").addEventListener("click", () => {
+  state.query = "";
+  document.getElementById("search").value = "";
+  render();
+});
+
+render();
+</script>
+</body>
+</html>
