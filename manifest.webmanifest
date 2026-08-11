@@ -1,10 +1,1 @@
-{
-  "name": "48 Laws of Power — বাংলা নোট",
-  "short_name": "48 Laws বাংলা",
-  "start_url": "./index.html",
-  "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#0d1015",
-  "theme_color": "#0d1015",
-  "lang": "bn"
-}
+{"name": "48 Laws বাংলা — Habit Builder", "short_name": "48 Laws বাংলা", "start_url": "./index.html", "display": "standalone", "orientation": "portrait", "theme_color": "#0b0f14", "background_color": "#0b0f14", "lang": "bn"}
