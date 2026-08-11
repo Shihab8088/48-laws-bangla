@@ -1,1 +1,10 @@
-{"name": "48 Laws বাংলা — Habit Builder", "short_name": "48 Laws বাংলা", "start_url": "./index.html", "display": "standalone", "orientation": "portrait", "theme_color": "#0b0f14", "background_color": "#0b0f14", "lang": "bn"}
+{
+  "name": "জীবনপথ — Habit Builder",
+  "short_name": "জীবনপথ",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0b0f14",
+  "background_color": "#0b0f14",
+  "lang": "bn"
+}
